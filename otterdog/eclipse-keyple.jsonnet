@@ -421,6 +421,26 @@ orgs.newOrg('iot.keyple', 'eclipse-keyple') {
         },
       ],
     },
+    orgs.newRepo('keyple-interop-jsonapi-client-nfc-xcframework') {
+      local thisRepo = self,
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      dependabot_security_updates_enabled: true,
+      description: "Eclipse Keyple™ Project: An XCFramework for iOS applications to interface with a remote Keyple-based control server over JSON API",
+      homepage: "https://keyple.org/",
+      web_commit_signoff_required: false,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule(thisRepo.default_branch) {
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
     orgs.newRepo('keyple-integration-java-test') {
       allow_merge_commit: true,
       allow_update_branch: false,
