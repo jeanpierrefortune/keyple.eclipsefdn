@@ -95,6 +95,26 @@ orgs.newOrg('iot.keyple', 'eclipse-keyple') {
         default_workflow_permissions: "write",
       },
     },
+    orgs.newRepo('keyple-java-bom') {
+      local thisRepo = self,
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: true,
+      dependabot_security_updates_enabled: true,
+      description: "Eclipse Keyple™ Project: A Bill of Materials (BOM) for Java/Kotlin applications to manage the versions of all Keyple artifacts",
+      homepage: "https://keyple.org/",
+      web_commit_signoff_required: false,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule(thisRepo.default_branch) {
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
     orgs.newRepo('keyple-card-calypso-crypto-legacysam-java-lib') {
       allow_merge_commit: true,
       allow_update_branch: false,
