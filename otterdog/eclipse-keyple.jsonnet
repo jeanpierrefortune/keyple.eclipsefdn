@@ -445,7 +445,8 @@ orgs.newOrg('iot.keyple', 'eclipse-keyple') {
         },
       ],
     },
-    orgs.newRepo('keyple-interop-jsonapi-client-nfc-xcframework') {
+    orgs.newRepo('keyple-interop-ios-xcframework') {
+      aliases: ['keyple-interop-jsonapi-client-nfc-xcframework'],
       local thisRepo = self,
       allow_merge_commit: true,
       allow_update_branch: false,
