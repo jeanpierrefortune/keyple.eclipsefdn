@@ -11,7 +11,7 @@ orgs.newOrg('iot.keyple', 'eclipse-keyple') {
       actions_can_approve_pull_request_reviews: false,
       default_workflow_permissions: "write",
     },
-  },  
+  },
   secrets+: [
     orgs.newOrgSecret('ORG_GITHUB_BOT_TOKEN') {
       value: "pass:bots/iot.keyple/github.com/api-token",
@@ -106,6 +106,66 @@ orgs.newOrg('iot.keyple', 'eclipse-keyple') {
       delete_branch_on_merge: true,
       dependabot_security_updates_enabled: true,
       description: "Eclipse Keyple™ Project: A Bill of Materials (BOM) for Java/Kotlin applications to manage the versions of all Keyple artifacts",
+      homepage: "https://keyple.org/",
+      web_commit_signoff_required: false,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule(thisRepo.default_branch) {
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
+    orgs.newRepo('keyple-logging-slf4j-jvm-lib') {
+      local thisRepo = self,
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: true,
+      dependabot_security_updates_enabled: true,
+      description: "Eclipse Keyple™ Project: SLF4J logging adapter for Java/Kotlin applications",
+      homepage: "https://keyple.org/",
+      web_commit_signoff_required: false,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule(thisRepo.default_branch) {
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
+    orgs.newRepo('keyple-logging-android-log-jvm-lib') {
+      local thisRepo = self,
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: true,
+      dependabot_security_updates_enabled: true,
+      description: "Eclipse Keyple™ Project: Android Log logging adapter for Java/Kotlin applications",
+      homepage: "https://keyple.org/",
+      web_commit_signoff_required: false,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule(thisRepo.default_branch) {
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
+    orgs.newRepo('keyple-logging-android-timber-jvm-lib') {
+      local thisRepo = self,
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: true,
+      dependabot_security_updates_enabled: true,
+      description: "Eclipse Keyple™ Project: Android Timber logging adapter for Java/Kotlin applications",
       homepage: "https://keyple.org/",
       web_commit_signoff_required: false,
       workflows+: {
